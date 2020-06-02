@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Bubby Birthday</title>
+  <script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <link rel="stylesheet" href="./style.css">
+        <link rel="stylesheet" href="./alt.css">
+</head>
+
+<body style="overflow-y: scroll;" onload="$('html,body').animate({scrollTop:-$('.rocket').offset().top}, 500);">
+    <button id="startBtn" style="height: 100%; width: 100%; position: relative; z-index: 99999; background-color: black; border: 1px solid black; color: white; font-size: 100px;" onclick="heartsAnim(); document.getElementById('startBtn').style.display = 'none';">Click to start!</button>
+
+        <div class="stars" class="bg-purple">
+            <div class="central-body">
+                <h1 style="color: white; font-size: 65px;">Love you to the moon and <a href="" onclick="window.location.reload();" style="color:red; text-decoration: none; background-color: none;">back.</a></h1>
+                <h2 style="color: white;">From: Ethan, Graham, Gabe, Jen, and Josh</h2>
+            </div>
+            <div class="objects">
+                <img class="object_rocket" src="http://salehriaz.com/404Page/img/rocket.svg" width="40px">
+                <div class="earth-moon">
+                    <img class="object_earth" src="http://salehriaz.com/404Page/img/earth.svg" width="100px">
+                    <img class="object_moon" src="http://salehriaz.com/404Page/img/moon.svg" width="80px">
+                </div>
+                <div class="box_astronaut">
+                    <img class="object_astronaut" src="http://salehriaz.com/404Page/img/astronaut.svg" width="140px">
+                </div>
+            </div>
+            <div class="glowing_stars">
+                <div class="star"></div>
+                <div class="star"></div>
+                <div class="star"></div>
+                <div class="star"></div>
+                <div class="star"></div>
+
+            </div>
+
+        </div>
+  
+<div id="countdown" style="margin-top: 45%; color: white; font-size: 200px; text-align: center;"><h1 style="margin-top: 55%; font-size: 50px">Launch sequence commencing</h1></div>
+
+  <div class="rocket" style="margin-top: 100%;" id="r">
+    <div class="rocket-body" id="bd">
+      <div class="body"></div>
+      <div class="fin fin-left"></div>
+      <div class="fin fin-right"></div>
+      <div class="window"></div>
+    </div>
+    <div class="exhaust-flame"></div>
+    <ul class="exhaust-fumes">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+    <ul class="star">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+
+    </body>
+<!-- partial -->
+  <script type="text/javascript">
+      function heartsAnim() {
+        console.log("running")
+
+        $('html,body').animate({scrollTop:$(".rocket").offset().top}, 500);
+        var isPlaying = false;
+
+        var timeleft = 3;
+        var downloadTimer = setInterval(function(){
+          if (!isPlaying) {
+            $(".rocket").click();
+            var audio = new Audio('r.mp3');
+            audio.play();
+            isPlaying = true;
+          }
+
+          if(timeleft == 0){
+            document.getElementById("countdown").innerHTML = timeleft;
+            setTimeout(function(){ $('#countdown').animate({opacity: 0}, 500); }, 1500);
+
+            clearInterval(downloadTimer);
+            document.getElementById('bd').style.animation = "bounce 4.0s";
+
+            setTimeout(function(){ $('html,body').animate({scrollTop:-$(".rocket").offset().top}, 2000); }, 1600);
+            setTimeout(function(){ $('.rocket').animate({opacity: 0}, 500); }, 2500);
+          } else {
+            document.getElementById("countdown").innerHTML = timeleft;
+          }
+          timeleft -= 1;
+        }, 1000);
+      }
+  </script>
+
+</body>
+</html>
